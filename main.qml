@@ -1,10 +1,11 @@
-import QtQuick 2.3
+import QtQuick 2.4
+
 
 Canvas
 {
+
 	width: 640
 	height: 480
-
 	function rnd(a, b)
 	{
 		return a + (b - a) * Math.random()
@@ -16,19 +17,16 @@ Canvas
 		var ctx = getContext("2d")
 		ctx.fillStyle = 'rgb(0.1, 0.1, 0.1)'
 		ctx.fillRect(0, 0, width, height)
-		for (var i = 0; i < 100; i ++)
+		for (var i = 0; i < stars.length; i ++)
 		{
-			var x = rnd(0, width)
-			var y = rnd(0, height)
-			var d = rnd(1, 5)
-			var r = rnd(.5, 1)
-			var g = rnd(.5, 1)
-			var b = rnd(.5, 1)
-			var c = Qt.rgba(r, g, b, 1.)
+			var star = JSON.parse(stars[i])[0]
+			
+			var c = Qt.rgba(star.r, star.g, star.b, 1.)
 			ctx.fillStyle = c
 			ctx.beginPath()
-			ctx.ellipse(x, y, d, d)
+			ctx.ellipse(star.x, star.y, star.size, star.size)
+			ctx.text(star.name, star.x, star.y);
 			ctx.fill()
-		} // for (var i = 0; i < 100; i ++)
+		}
 	} // onPaint
 } // Canvas

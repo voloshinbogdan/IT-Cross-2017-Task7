@@ -10,7 +10,7 @@ set( qt_distro /opt/anaconda3)
 # Add the path to the Qt installation/files
 set(CMAKE_PREFIX_PATH ${qt_distro})
 
-project(QMLFileBrowser)
+project(Sky)
 
 find_package(Qt5Core REQUIRED Widgets Qml Quick Gui)
 find_package(Qt5Quick)
@@ -20,10 +20,10 @@ find_package(Qt5Widgets)
 
 qt5_add_resources(QRC_WRAPPERS qml.qrc)
 
-add_executable(QMLFileBrowser WIN32 main.cpp ${QRC_WRAPPERS})
+add_executable(Sky WIN32 main.cpp ${QRC_WRAPPERS})
 
-target_link_libraries(QMLFileBrowser Qt5::Qml Qt5::Quick Qt5::Widgets Qt5::Gui)
+target_link_libraries(Sky Qt5::Qml Qt5::Quick Qt5::Widgets Qt5::Gui)
 
-#add_custom_command(TARGET QMLFileBrowser POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/bin $<TARGET_FILE_DIR:QMLFileBrowser>)
-#add_custom_command(TARGET QMLFileBrowser POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/plugins $<TARGET_FILE_DIR:QMLFileBrowser>)
-#add_custom_command(TARGET QMLFileBrowser POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/qml $<TARGET_FILE_DIR:QMLFileBrowser>)
+#add_custom_command(TARGET Sky POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/bin $<TARGET_FILE_DIR:Sky>)
+#add_custom_command(TARGET POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/plugins $<TARGET_FILE_DIR:Sky>)
+#add_custom_command(TARGET Sky POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_PREFIX_PATH}/qml $<TARGET_FILE_DIR:Sky>)
