@@ -17,9 +17,10 @@ Canvas
 		var ctx = getContext("2d")
 		ctx.fillStyle = 'rgb(0.1, 0.1, 0.1)'
 		ctx.fillRect(0, 0, width, height)
-		for (var i = 0; i < stars.length; i ++)
+		var _stars = JSON.parse(stars[0])
+		for (var i = 0; i < _stars.length; i ++)
 		{
-			var star = JSON.parse(stars[i])[0]
+			var star = _stars[i]
 			
 			var c = Qt.rgba(star.r, star.g, star.b, 1.)
 			ctx.fillStyle = c

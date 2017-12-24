@@ -16,28 +16,6 @@
 
 const QString INPUT_FILENAME = "stars.json";
 
-
-struct Star
-{
-	QString name;
-	int x;
-	int y;
-	int size;
-	double r;
-	double g;
-	double b;
-/*
-	Star(const QString& name, int x, int y, int size, int r, int g, int b):
-		name(name), x(x), y(y), size(size), r(r), g(g), b(b)
-	{
-
-	}*/
-};
-
-
-Q_DECLARE_METATYPE(Star)
-
-
 QVariantList read_stars_from_json(const QString& filename)
 {
 	QVariantList res;
@@ -48,25 +26,8 @@ QVariantList read_stars_from_json(const QString& filename)
 	file.open(QIODevice::ReadOnly | QIODevice::Text);
 	val = file.readAll();
 	file.close();
-	QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
-	QJsonArray stars = d.array();
 
-	for (int i = 0; i < stars.size(); ++i)
-	{
-		int x = stars[i].toObject()["x"].toVariant().toInt();
-		int y = stars[i].toObject()["y"].toVariant().toInt();
-		int size = stars[i].toObject()["size"].toVariant().toInt();
-		double r = stars[i].toObject()["r"].toVariant().toInt();
-		double g = stars[i].toObject()["g"].toVariant().toInt();
-		double b = stars[i].toObject()["b"].toVariant().toInt();
-		QString name = stars[i].toObject()["name"].toVariant().toString();
-
-		QVariant var;
-		Star v = { name, x, y, size, r, g, b };
-		var.setValue(v);
-		res << val;
-	}
-
+	res << val;
 	return res;
 }
 
